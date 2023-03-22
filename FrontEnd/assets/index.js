@@ -1,42 +1,98 @@
-// Méthode Fetch pour récupérer les travaux (works)
-var gallery = document.getElementsByClassName("gallery")[0];
+displayGallery();
+displayCategory();
 
-// Requête pour récupérer les travaux à partir de l'API
+/*
+* Get project from API
+*/
+function displayGallery() {
+	var gallery = document.getElementsByClassName('gallery')[0];
+	
+	// Request work from API
+	fetch("http://localhost:5678/api/works")
+	.then(function(result) {
+		return result.json();
+	})
 
-fetch("http://localhost:5678/api/works")
+	.then(function(value) {
+		value.forEach((work) => {
+			// Create elements
+			var figure = document.createElement('figure');
+			var img = document.createElement('img');
+			var figcaption = document.createElement('figcaption');
 
-.then(function(response) {
-  if(response.ok) {
-    return response.json();
-  }
-})
+          // Ajout des classes pour figure
 
-.then(function (value) {
-  value.forEach((elm) => {
-    // Création des éléments
-    var figure = document.createElement("figure");
-    var img = document.createElement("img");
-    var figcaption = document.createElement("figcaption")
+    figure.classList.add('work-item','category-id');
 
-    // Attributs des images
-    img.setAttribute("src", elm.imageUrl);
-    img.setAttribute("alt", elm.title);
-    img.setAttribute("crossorigin", "anonymous");
+			// Set attributes for image
+			img.setAttribute('src', work.imageUrl);
+			img.setAttribute('alt', work.title);
+			img.setAttribute('crossorigin', "anonymous");
 
-    // Attribut figcaption
-    figcaption.innerText = elm.title;
+			// Set attribute for figcaption
+			figcaption.innerText = work.title
 
-    // utilisation de appendChild pour ajouter des enfants à la balise "figure"
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
+			figure.appendChild(img);
+			figure.appendChild(figcaption);
 
-    // Ajoute les éléments dans le DOM
-    gallery.appendChild(figure);
+			// Add the projects in the DOM
+			gallery.appendChild(figure);
+		})
+	})
+
+	.catch(function(err) {
+    console.log(err);
   });
- 
-})
+}
 
-.catch(function(err) {
-  console.log(err);
-});
 
+/*
+* Get category from API
+*/
+function displayCategory() {
+	var filter = document.getElementById('filters');
+
+	// Requête vers l'API suivante :
+	fetch("http://localhost:5678/api/categories")
+	.then(function(result) {
+		return result.json();
+	})
+
+	.then(function(categories) {
+		// Add "all" in category
+		categories.unshift({
+			"id": 0,
+			"name": "Tous"
+		})
+
+
+		categories.forEach(category => {
+			var button = document.createElement('button');
+
+			// Add button's name
+			button.innerText = category.name;
+
+			// onload => 
+			if (category.id == 0) {
+				button.classList.add('active');
+			}
+
+			filter.appendChild(button);
+
+
+			// Event on click to change category
+
+			button.addEventListener('click', function() {
+				filter.querySelectorAll('button').forEach(btn => {
+					btn.classList.remove('active');
+				});
+
+				button.classList.add('active');
+			});
+		})
+	})
+
+	.catch(function(err) {
+    console.log(err);
+  });
+}
