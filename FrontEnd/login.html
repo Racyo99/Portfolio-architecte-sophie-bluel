@@ -1,32 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Login</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-        <nav>
-          <ul>
-            <li>projets</li>
-            <li>contact</li>
-            <li>login</li>
-            <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
-          </ul>
-        </nav>
-      </header> 
-      <section id="formulaire">
-        <h2>Log in</h2>
-        <form action="#">
-            <p>E-mail </p>
-            <input type="text">
-            <p>Mot de passe</p>
-            <input type="password">
-        </form>
-      </section>
-</body>
+      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <nav>
+        <ul>
+          <li>projets</li>
+          <li>contact</li>
+          <li><a id="nav-logout" class="only-admin">logout</a></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="formulaire">
+      <h2>Log in</h2>
+
+      <form method="post" id="myForm">
+        <div class="form-contain">
+          <label for="email">E-mail</label>
+          <br />
+          <input type="email" name="email" id="email" required="required" />
+          <span id="error-mail"></span>
+        </div>
+
+        <br>
+
+        <div class="form-contain">
+          <label for="password">Mot de passe</label>
+          <br />
+          <input type="password"name="password"id=" password"required="required"/>
+          <span id="error_pwd"></span>
+        </div>
+
+        <br>
+        <button type="submit" id="login-button">Se connecter</button>
+        <br>
+        <br>
+        <!-- <input type="submit" value="Se connecter" id="login-button"> -->
+        <a href="#"><u><p>Mot de passe oublié</p></u></a>
+      </form>
+    </section>
+
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+
+    <script src="./assets/login.js"></script>
+  </body>
 </html>
