@@ -12,42 +12,52 @@
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
         <ul>
-          <li>projets</li>
-          <li>contact</li>
-          <li><a id="nav-logout" class="only-admin">logout</a></li>
+          <li><a href="index.html">projets</a></li>
+          <li><a href="index.html#contact">contact</a></li>
+          <li>
+            <a id="nav-login" class="only-guest" href="login.html">login</a>
+          </li>
+          <li><a id="nav-logout" class="only-admin" href="#">logout</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
     </header>
     <section id="formulaire">
       <h2>Log in</h2>
-
-      <form method="post" id="myForm">
+      <form method="post" id="login-form">
         <div class="form-contain">
           <label for="email">E-mail</label>
           <br />
-          <input type="email" name="email" id="email" required="required" />
+          <input
+            type="email"
+            name="email"
+            id="login-form-email"
+            required="required"
+          />
           <span id="error-mail"></span>
         </div>
-
-        <br>
-
+        <br />
         <div class="form-contain">
           <label for="password">Mot de passe</label>
           <br />
-          <input type="password"name="password"id=" password"required="required"/>
+          <input
+            type="password"
+            name="password"
+            id="login-form-password"
+            required="required"
+          />
           <span id="error_pwd"></span>
         </div>
-
-        <br>
-        <button type="submit" id="login-button">Se connecter</button>
-        <br>
-        <br>
+        <br />
+        <button type="submit" class="button">Se connecter</button>
+        <br />
+        <br />
         <!-- <input type="submit" value="Se connecter" id="login-button"> -->
-        <a href="#"><u><p>Mot de passe oublié</p></u></a>
+        <a href="#"
+          ><u><p>Mot de passe oublié</p></u></a
+        >
       </form>
     </section>
-
     <footer>
       <nav>
         <ul>
@@ -55,7 +65,6 @@
         </ul>
       </nav>
     </footer>
-
     <script src="./assets/login.js"></script>
   </body>
 </html>
