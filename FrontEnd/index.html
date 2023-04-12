@@ -13,7 +13,7 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
-  <body>
+  <body id="all-contain">
     <header>
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
@@ -75,33 +75,63 @@
     </main>
 
     <div id="modal-works" class="modal">
-      <h2>Galerie photos</h2>
+      <div class="modal-content">
+        <h2>Galerie photos</h2>
 
-      <div class="gallery-works">
+        <br>
+  
+        <div id="gallery-contain-works">
+          <div class="gallery-works">
+          </div>
+          
+          <div class="gallery-works">
+          </div>
+          
+          <div class="gallery-works">
+          </div>
+  
+          <div class="gallery-works">
+          </div>
+    
+          <div class="gallery-works">
+          </div>
+    
+          <div class="gallery-works">
+          </div>
+    
+          <div class="gallery-works">
+          </div>
+  
+          <div class="gallery-works">
+          </div>
+    
+          <div class="gallery-works">
+          </div>
+    
+          <div class="gallery-works">
+          </div>
+    
+          <div class="gallery-works">
+          </div>
+    
+          <div class="gallery-works">
+          </div>
+  
+        </div>
+  
+        <br>
+        
+        <hr id="line-modal-works">
+  
+        <br>
+  
+        <button type="submit" class="button" id="button-add-img" href="modal-gallery-add">Ajouter une photo</button>
+  
+        <br><br>
+  
+        <a href="#" style="color: red;"><u><p>Supprimer la galerie</p></u></a>
+
       </div>
-
-      <div class="gallery-works">
-      </div>
-
-      <div class="gallery-works">
-      </div>
-
-      <div class="gallery-works">
-      </div>
-
-      <div class="gallery-works">
-      </div>
-
-      <hr id="line-modal-works">
-
-      <br>
-
-      <button type="submit" class="button">Ajouter une photo</button>
-
-      <br><br>
-
-      <a href="#" style="color: red;"><u><p>Supprimer la galerie</p></u></a>
-
      </div>
 
      <br><br>
@@ -109,31 +139,39 @@
      <div id="modal-add" class="modal">
       <h2>Ajout photo</h2>
 
+      <br>
+
       <div id="modal-gallery-add">
-        <button type=submit name=action><img src="#" alt="#">+Ajouter photo</button>
-        <p>jpg png: 4mo max</p>
+        <div>
+          <button type=submit name=action>+Ajouter photo</button>
+          <p>jpg png: 4mo max</p>
+        </div>
       </div>
-
+      
       <br>
 
-      <p>Titre</p>
-      <input type="text" name="titre" class="modal-title">
+      <form action="" id="form-modal-add">
+        <div>
+          <label for="">Titre</label>
+          <br><br>
+          <input type="text" name="titre" class="modal-title">
+        </div>
 
-      <br><br>
-
-      <p>Catégorie</p>
-      <select name="category" id="category-select">
-        <option value=""></option>
-        <option value="objets">Objets</option>
-        <option value="appartements">appartements</option>
-        <option value="hotels-restaurants">Hôtels & Restaurants</option>
-      </select>
-
-      <br><br>
-
-      <button type="submit" class="button" id="button-modal-add">Valider</button>
-
-      <br>
+        <div>
+          <label for="">Catégorie</label>
+          <br><br>
+          <select name="category" id="category-select">
+           <option value=""></option>
+            <option value="objets">Objets</option>
+            <option value="appartements">appartements</option>
+            <option value="hotels-restaurants">Hôtels & Restaurants</option>
+          </select>
+        </div>
+        
+        <br><br>
+        
+        <button type="submit" class="button" id="button-modal-add">Valider</button>
+      </form>
 
      </div>
 
@@ -149,5 +187,6 @@
 
 
     <script src="./assets/index.js"></script>
+    <script src="./assets/modal.js"></script>
   </body>
 </html>

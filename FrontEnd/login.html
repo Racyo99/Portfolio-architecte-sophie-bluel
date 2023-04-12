@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Login</title>
   </head>
-  <body>
+  <body id="all-contain">
     <header>
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
@@ -27,7 +27,7 @@
       <form method="post" id="login-form">
         <div class="form-contain">
           <label for="email">E-mail</label>
-          <br />
+          <br /><br />
           <input
             type="email"
             name="email"
@@ -36,24 +36,28 @@
           />
           <span id="error-mail"></span>
         </div>
+
         <br />
+
         <div class="form-contain">
           <label for="password">Mot de passe</label>
-          <br />
+          <br /><br />
           <input
             type="password"
             name="password"
             id="login-form-password"
             required="required"
           />
-          <span id="error_pwd"></span>
         </div>
+
         <br />
+
         <button type="submit" class="button">Se connecter</button>
+
         <br />
         <br />
-        <!-- <input type="submit" value="Se connecter" id="login-button"> -->
-        <a href="#"
+
+        <a href="#" style="color: black"
           ><u><p>Mot de passe oublié</p></u></a
         >
       </form>
