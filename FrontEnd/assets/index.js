@@ -6,7 +6,7 @@ fetch("http://localhost:5678/api/works")
 .then(function(value) {
 	value.forEach((work) => {
 
-		console.log(work);
+		//console.log(work);
 
 		// Create elements
 		var figure = document.createElement('figure');
@@ -44,7 +44,7 @@ fetch("http://localhost:5678/api/categories")
 })
 .then(function(categories) {
 
-	console.log(categories);
+	//console.log(categories);
 
 	// Adding category "Tous"
 	categories.unshift({
@@ -88,3 +88,23 @@ fetch("http://localhost:5678/api/categories")
 .catch(function(err) {
 	console.log(err);
 });
+
+// Executing JS code when the page is loaded
+document.addEventListener("DOMContentLoaded", function() {
+	// Handling admin / guest display
+	if(localStorage.getItem('token') != null) {
+		document.querySelector('body').classList.add('connected');
+	}
+	// Handling disconnection
+	document.getElementById('nav-logout').addEventListener('click', function(event) {
+		event.preventDefault();
+		localStorage.removeItem('userId');
+		localStorage.removeItem('token');
+		location.href = "index.html";
+	});
+	// Handling modal opening
+	document.getElementById('modal-cta-open').addEventListener('click', function(event) {
+		// @todo : Switch modal to display:block
+	});
+});
+

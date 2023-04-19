@@ -1,31 +1,7 @@
-/*
-fetch("http://localhost:5678/api/users/login")
-.then(function(response) {
-	if(response.ok) {
-		return response.json();
-	}
-})
-.then(function(response) {
-	// Le traitement est à écrire ici (et ce commentaire doit s'autodétruire :o)
-})
-.catch(function(err) {
-	console.log(err);
-});
-*/
-
-
-
-// login-form
-// login-form-email
-// login-form-password
-
-
 // On récupère les élements du formulaire
 const form = document.querySelector('#login-form');
 const email = document.querySelector('#login-form-email');
 const password = document.querySelector('#login-form-password');
-
-
 
 // On génère des événements et on empêche le compotement par défault
 form.addEventListener('submit', function(event) {
@@ -64,36 +40,9 @@ form.addEventListener('submit', function(event) {
 	.then(function(response) {
 		localStorage.setItem('userId', response.userId);
 		localStorage.setItem('token', response.token);
-
-		if(localStorage.setItem('token') = token)
-			body.setAttribute('class', 'connected')
-
-		else alert("Erreur");
+		location.href = "index.html";
 	})
-
-
-	form.addEventListener('click', function(event){
-
-		if(localStorage.getItem('token') == null){
-			body.setAttribute('class', 'disconnect')
-	} 
-
-	else(localStorage.getItem('token') === 0)
-		body.setAttribute('class', 'connected')
-
-	})
-
-    // Supprimer le token 
-		.then(function(response) {
-		localStorage.removeItem('userId', response.userId);
-		localStorage.removeItem('token', response.token);
-	})
-
 	.catch(function(err) {
 		console.log(err);
 	});
-})
-
-
-
-
+});
