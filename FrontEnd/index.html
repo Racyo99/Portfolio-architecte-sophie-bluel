@@ -59,6 +59,7 @@
       </section>
       <section id="portfolio">
         <h2>Mes Projets</h2>
+        <span id="modal-open" class="cta-edit only-admin">modifier</span>
         <div id="filters">
           <!--Charger en-->
         </div>
@@ -104,17 +105,17 @@
 						<div id="modal-add-image">
 							<span class="modal-button">+Ajouter photo</span>
 							<p>jpg png: 4mo max</p>
-							<input type="file" accept=".jpg, .png" id="modal-form-image" class="modal-form-image">
+							<input type="file" accept=".jpg, .png" id="modal-form-image" class="modal-form-image" name="image"/>
 						</div>
 						<div id="modal-add-form">
 							<label for="modal-form-title">Titre</label>
-							<input type="text" id="modal-form-title" class="modal-form-title" name="modal-form-title" >
+							<input type="text" id="modal-form-title" class="modal-form-title" name="title" >
               <label for="modal-form-category">Catégorie</label>
-							<select id="modal-form-category" class="modal-form-category" name="modal-form-category">
+							<select id="modal-form-category" class="modal-form-category" name="category">
 								<option value=""></option>
-								<!--
-								générer en javascript
-								-->
+                <option value="1">Objets</option>
+                <option value="2">Appartements</option>
+                <option value="3">Hôtels & Restaurants</option>
 							</select>
               <button type="submit" id="modal-button-save-work" class="modal-button">Valider</button>
 						</div>
