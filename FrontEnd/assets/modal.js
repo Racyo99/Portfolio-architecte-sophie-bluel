@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("modal-add-image")
     .addEventListener("click", function (event) {
-      event.preventDefault();
+      //event.preventDefault();
       // @todo
     });
 
@@ -73,58 +73,51 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("modal-form-new-work")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+      const token = localStorage.getItem('token');
+      console.log(token);
       // @todo
       const formData = new FormData(event.target);
-      for (const value of formData.values()) {
-        console.log(value);
-      }
-      console.log(formData);
+      fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {Authorization: `Bearer ${token}`},
+        body: formData,
+      })
+        
     });
 
-//--------------
+  //--------------
 
-  fetch("http://localhost:5678/api/works", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: email.value.trim(),
-      password: password.value.trim(),
-    }),
-  })
-    .then((reponse) => reponse.json())
+fetch("http://localhost:5678/api/works")
+.then(function(result) {
+	return result.json();
+})
+.then(function(value) {
+	value.forEach((work) => {
 
-    .then(function (response) {
-      // create elements
-      var div = document.createElement("div");
-      var img = document.createElement("img");
-      var figcaption = document.createElement("figcaption");
+		// Create elements
+		var div = document.createElement('div');
+		var img = document.createElement('img');
+		var figcaption = document.createElement('figcaption');
 
-      // Set attributes for image
-      img.setAttribute("src", work.imageUrl);
-      img.setAttribute("alt", work.title);
-      img.setAttribute("crossorigin", "anonymous");
+	
+		// Set attributes for image
+		img.setAttribute('src', work.imageUrl);
+		img.setAttribute('alt', work.title);
+		img.setAttribute('crossorigin', "anonymous");
 
-      // Set attribute for figcaption
-      figcaption.innerText = work.title;
+		// Set attribute for figcaption
+		figcaption.innerText = work.title
 
-      div.appendChild(img);
-      div.appendChild(figcaption);
+		div.appendChild(img);
+		div.appendChild(figcaption);
 
-      // Add the projects in the DOM
-      document.querySelector(".gallery").appendChild(div);
-    });
+		// Add the projects in the DOM
+		document.querySelector('#modal-gallery-works').appendChild(div);
+	})
+})
+.catch(function(err) {
+	console.log(err);
 });
 
-//-----------------------
 
-// Stocker mon token obtenu dans une variable 'token' par exemple
-localStorage.setItem('token', token);
-
-// Méthode pour récupérer le localStorage ultérieurement 
-var token = localStorage.getItem('token');
-
-// Vérifier le token dans le localStorage 
-// (éventuellement si l'utilisateir n'est pas donné son autorisation ait expiré)
-localStorage.removeItem('token');
+});
