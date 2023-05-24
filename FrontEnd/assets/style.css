@@ -453,8 +453,14 @@ select {
 #modal-works-list{
 
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 50%;
+  height: 80%;
+  overflow: auto;
 }
 
 #modal-works-add{
@@ -590,6 +596,8 @@ color: #000000;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px 15px;
+  max-height: 100%;
+  overflow: auto;
 
 
 }
