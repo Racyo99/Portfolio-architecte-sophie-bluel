@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Login</title>
+  </head>
+  <body id="all-contain">
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">projets</a></li>
+          <li><a href="index.html#contact">contact</a></li>
+          <li>
+            <a id="nav-login" class="only-guest" href="login.html">login</a>
+          </li>
+          <li><a id="nav-logout" class="only-admin" href="#">logout</a></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="formulaire">
+      <h2>Log in</h2>
+      <form method="post" id="login-form">
+        <div class="form-contain">
+          <label for="email" id="input-mail">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            id="login-form-email"
+            required="required"
+          />
+          <span id="error-mail"></span>
+        </div>
+
+        <div class="form-contain">
+          <label for="password" id="input-pwd">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="login-form-password"
+            required="required"
+          />
+        </div>
+
+        <button type="submit" class="button">Se connecter</button>
+        <a href="#" style="color: black"
+          ><u><p>Mot de passe oublié</p></u></a
+        >
+      </form>
+    </section>
+    <footer id="footer-login">
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+    <script src="./assets/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sophie Bluel - Architecte d'intérieur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body id="all-contain">
+  	<div class="top-bar only-admin">
+      <i class="fa-regular fa-pen-to-square"></i>
+      <p>Mode édition</p>
+      <button>Publiez les changements</button>
+    </div>
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+      <nav>
+        <ul>
+          <ul>
+            <li><a href="index.html">projets</a></li>
+            <li><a href="index.html#contact">contact</a></li>
+            <li class="only-guest"><a id="nav-login" class="only-guest" href="login.html">login</a></li>
+            <li class="only-admin"><a id="nav-logout" class="only-admin">logout</a></li>
+          	<li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="introduction">
+        <figure>
+          <img src="./assets/images/sophie-bluel.png" alt="" />
+          <span id="modal-open" class="cta-edit only-admin">modifier</span>
+        </figure>
+        <article>
+          <h2>Designer d'espace</h2>
+          <p>
+            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
+            de la conception à la livraison finale du chantier.
+          </p>
+          <p>
+            Chaque projet sera étudié en commun, de façon à mettre en valeur les
+            volumes, les matières et les couleurs dans le respect de l’esprit
+            des lieux et le choix adapté des matériaux. Le suivi du chantier
+            sera assuré dans le souci du détail, le respect du planning et du
+            budget.
+          </p>
+          <p>
+            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
+            : architecte DPLG, décorateur(trice)
+          </p>
+        </article>
+      </section>
+      <section id="portfolio">
+        <h2>Mes Projets</h2>
+        <span id="modal-open" class="cta-edit only-admin">modifier</span>
+        <div id="filters">
+          <!--Charger en-->
+        </div>
+        <div class="gallery">
+          <!-- Charger en javascript -->
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Vous avez un projet ? Discutons-en !</p>
+        <form action="#" method="post">
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+          <label for="message">Message</label>
+          <textarea name="message" id="message" cols="30" rows="10"></textarea>
+          <input type="submit" value="Envoyer" />
+        </form>
+      </section>
+    </main>
+		<div class="modal-overlay">
+			<div class="modal">
+				<span id="modal-close" class="modal-close">X</span>
+				<div id="modal-works-list" class="modal-content">
+          <i class="fa-solid-fa-xmark"></i>
+					<h2 class="modal-title">Galerie photo</h2>
+					<div id="modal-gallery-works" class="horizontal-bar">
+						<div class="gallery-works-item">X</div>
+            <div class="gallery-works-item">X</div>
+            <div class="gallery-works-item">X</div>
+					</div>
+					<span id="modal-button-add-work" class="modal-button">Ajouter une photo</span>
+					<span id="modal-button-delete-work" class="modal-button">Supprimer la galerie</span>
+				</div>
+ 
+				<div id="modal-works-add" class="modal-content">
+					<span id="modal-previous" class="modal-previous">
+            <i id="caret-left"  class="fa-solid fa-caret-left"></i>
+          </span>
+					<h2 class="modal-title">Ajout photo</h2>
+					<form id="modal-form-new-work" class="modal-form" action="#">
+						<div id="modal-add-image">
+							<span class="modal-button">+Ajouter photo</span>
+							<p>jpg png: 4mo max</p>
+							<input type="file" accept=".jpg, .png" id="modal-form-image" class="modal-form-image" name="image"/>
+						</div>
+						<div id="modal-add-form">
+							<label for="modal-form-title">Titre</label>
+							<input type="text" id="modal-form-title" class="modal-form-title" name="title" >
+              <label for="modal-form-category">Catégorie</label>
+							<select id="modal-form-category" class="modal-form-category" name="category">
+								<option value=""></option>
+                <option value="1">Objets</option>
+                <option value="2">Appartements</option>
+                <option value="3">Hôtels & Restaurants</option>
+							</select>
+              <button type="submit" id="modal-button-save-work" class="modal-button">Valider</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+    <script src="./assets/index.js"></script>
+    <script src="./assets/modal.js"></script>
+  </body>
+</html>
