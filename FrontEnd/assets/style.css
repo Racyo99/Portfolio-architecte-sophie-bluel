@@ -368,7 +368,6 @@ footer nav ul {
   justify-content: space-between;
 }
 
-
 #modal-works,
 #modal-add h2 {
   text-align: center;
@@ -460,14 +459,18 @@ select {
   padding: 20px;
   width: 50%;
   height: 80%;
-  overflow: auto;
+  
 }
 
 #modal-works-add{
   display: none;
 }
 
-.modal-close{}
+.modal-close{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
 
 .modal-content{
  
@@ -496,6 +499,7 @@ font-size: 26px;
 line-height: 30px;
 text-align: center;
 
+margin-bottom: 15px;
 color: #000000;
 }
 
@@ -516,15 +520,20 @@ color: #000000;
 
   text-align: center;
   border: 1px solid black;
+
 }
 
 #modal-button-add-work{
   width: 235px;
   height: 35px;
   padding: 10px;
-  margin: 38px;
+  margin: 20px;
   background-color: #1D6154;
   color: #FFFFFF;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #modal-add-image{
@@ -533,11 +542,6 @@ color: #000000;
   gap: 1em;
   margin: 36px;
   padding: 4em;
-
-  height: 169px;
-  left: 510px;
-  top: 786px;
-
   align-items: center;
   background: #E8F1F7;
   border-radius: 3px;
@@ -573,7 +577,6 @@ color: #000000;
 .modal-button{} 
 
 .top-bar{
-  display: flex;
   gap: 1em;
   background-color: #000000;
   color: #FFFFFF;
@@ -594,10 +597,10 @@ color: #000000;
 
 #modal-gallery-works{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 30px 15px;
-  max-height: 100%;
-  overflow: auto;
+  max-height: 75%;
+  overflow-y: auto;
 
 
 }
@@ -606,4 +609,25 @@ color: #000000;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.gallery-works-item{
+  position: relative;
+
+}
+
+.modal-form-image{
+	display:none;
+}
+
+.modal{
+	display: none;
+}
+.modal div{
+	position:relative;
+}
+
+.trash-over{
+  position: absolute;
+  z-index: 99;
 }

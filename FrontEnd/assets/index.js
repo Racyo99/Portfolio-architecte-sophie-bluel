@@ -9,9 +9,9 @@ fetch("http://localhost:5678/api/works")
 		//console.log(work);
 
 		// Create elements
-		var figure = document.createElement('figure');
-		var img = document.createElement('img');
-		var figcaption = document.createElement('figcaption');
+		let figure = document.createElement('figure');
+		let img = document.createElement('img');
+		let figcaption = document.createElement('figcaption');
 
 		// Ajout des classes pour figure
 		figure.classList.add('work-item', `category-id-0`);
@@ -54,7 +54,7 @@ fetch("http://localhost:5678/api/categories")
 
 	// Creating categories
 	categories.forEach(category => {
-		var button = document.createElement('button');
+		let button = document.createElement('button');
 
 		// Adding button
 		button.innerText = category.name;
@@ -102,9 +102,4 @@ document.addEventListener("DOMContentLoaded", function() {
 		localStorage.removeItem('token');
 		location.href = "index.html";
 	});
-	// Handling modal opening
-	document.getElementById('modal-cta-open').addEventListener('click', function(event) {
-		// @todo : Switch modal to display:block
-	});
 });
-
