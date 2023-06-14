@@ -57,25 +57,30 @@ document.addEventListener("DOMContentLoaded", function () {
             "gallery-works-item-delete gallery-works-item-icon fa-regular fa-trash-can trash-over"
           );
           iconTrash.addEventListener("click", function (event) {
+            event.preventDefault();
             let click_id = event.target.parentNode.getAttribute("work-id"); // ID de l'image
             console.log("Supprime l'id : " + click_id);
             // @toDelete! Faire un fetch en copiant collant un autre déjà fait et l'adapter
 
-            fetch("http://localhost:5678/api/works", {
+            fetch("http://localhost:5678/api/works/" + click_id, {
               method: "DELETE",
-              //headers: {
-              //  Authorization: "Bearer " + localStorage.getItem("token"),
-              //}
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
             })
+              .then(function (result) {
+                return result.json();
+              })
+
               .then(function (response) {
                 switch (response.status) {
                   case 500:
                   case 503:
-                    alert("Erreur inattendue!");
+                    console.error("Erreur inattendue!");
                     break;
                   case 400:
                   case 404:
-                    alert("Impossible de supprimer le nouveau projet!");
+                    console.error("Impossible de supprimer le nouveau projet!");
                     break;
                   case 200:
                   case 201:
@@ -83,14 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                     break;
                   default:
-                    alert("Erreur inconnue!");
+                    console.error("Erreur inconnue!");
                     break;
                 }
               })
-              .catch(function (err) {
-                console.log(err);
-              });
-
+             
             // Récupérer l'ID 		=>		OK
             // Parcour le tableau récupéré (value).
             // Si "element_parcouru" est égal à "click_id"
@@ -98,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // console.log(value);
           });
-		   
+
           div.appendChild(iconTrash);
 
           // Add elements to the DOM
@@ -190,31 +192,31 @@ document.addEventListener("DOMContentLoaded", function () {
         // @toImprove! Implémenter le HTML (en js) qui permet d'afficher le work dans la popup et dans le corps de la page à partir de ce que contient la variable json
         // createElement + setAttribute + appendChild
 
-		// Creating <div>
-		let div = document.createElement("div");
-		div.setAttribute("id", `gallery-works-item-${work.id}`);
-		div.setAttribute("work-id", work.id);
-		div.classList.add("gallery-works-item");
+        // Creating <div>
+        let div = document.createElement("div");
+        div.setAttribute("id", `gallery-works-item-${work.id}`);
+        div.setAttribute("work-id", work.id);
+        div.classList.add("gallery-works-item");
 
-		// Creating <img>
-		let img = document.createElement("img");
-		img.setAttribute("src", work.imageUrl);
-		img.setAttribute("alt", work.title);
-		img.setAttribute("crossorigin", "anonymous");
-		div.appendChild(img);
+        // Creating <img>
+        let img = document.createElement("img");
+        img.setAttribute("src", work.imageUrl);
+        img.setAttribute("alt", work.title);
+        img.setAttribute("crossorigin", "anonymous");
+        div.appendChild(img);
 
-		// Creating <span>
-		let span = document.createElement("span");
-		span.textContent = "éditer";
-		div.appendChild(span);
+        // Creating <span>
+        let span = document.createElement("span");
+        span.textContent = "éditer";
+        div.appendChild(span);
 
-		// Creating CTA <i> move
-		let iconMove = document.createElement("i");
-		iconMove.setAttribute(
-		  "class",
-		  "gallery-works-item-icon fa-solid fa-up-down-left-right"
-		);
-		div.appendChild(iconMove);
+        // Creating CTA <i> move
+        let iconMove = document.createElement("i");
+        iconMove.setAttribute(
+          "class",
+          "gallery-works-item-icon fa-solid fa-up-down-left-right"
+        );
+        div.appendChild(iconMove);
       })
       .catch(function (err) {
         console.log(err);

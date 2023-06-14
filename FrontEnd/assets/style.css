@@ -181,7 +181,7 @@ li:hover {
 .only-guest{display:block;}
 .only-admin{display:none;}
 body.connected .only-guest{display:none;}
-body.connected .only-admin{display:block;}
+body.connected .only-admin{display:flex;}
 
 #introduction {
   display: flex;
@@ -584,6 +584,8 @@ color: #000000;
   background-color: #000000;
   color: #FFFFFF;
   padding: 0.5em;
+  display: flex;
+  align-items: center;
 }
 
 #modal-button-delete-work{
