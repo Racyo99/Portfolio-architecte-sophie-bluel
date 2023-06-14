@@ -34,9 +34,10 @@
       <section id="introduction">
         <figure>
           <img src="./assets/images/sophie-bluel.png" alt="" />
-          <span class="cta-edit only-admin"><i class="fa-sharp fa-regular fa-pen-to-square"></i> modifier</span>
+          <span id="btn-2" class="cta-edit only-admin"><i class="fa-sharp fa-regular fa-pen-to-square"></i> modifier</span>
         </figure>
         <article>
+      		<span id="btn-1" class="cta-edit only-admin"><i class="fa-sharp fa-regular fa-pen-to-square"></i> modifier</span>
           <h2>Designer d'espace</h2>
           <p>
             Je raconte votre histoire, je valorise vos idées. Je vous accompagne
@@ -56,8 +57,10 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
-        <span id="modal-open" class="cta-edit only-admin"><i class="fa-sharp fa-regular fa-pen-to-square"></i> modifier</span>
+      	<div class="portfolio-title">
+        	<h2>Mes Projets</h2>
+        	<span id="modal-open" class="cta-edit only-admin"><i class="fa-sharp fa-regular fa-pen-to-square"></i> modifier</span>
+      	</div>
         <div id="filters">
           <!--Charger en-->
         </div>
@@ -80,43 +83,49 @@
       </section>
     </main>
 		<div id="modal" class="modal">
-			<span id="modal-close" class="modal-close">X</span>
-			<div id="modal-works-list" class="modal-content">
-        <i class="fa-solid-fa-xmark"></i>
-				<h2 class="modal-title">Galerie photo</h2>
-				<div id="modal-gallery-works" class="horizontal-bar">
-          
-        </div>
-				<button id="modal-button-add-work" class="modal-button">Ajouter une photo</button>
-				<button id="modal-button-delete-work" class="modal-button">Supprimer la galerie</button>
-			</div>
+			<div class="modal-content-layout">
+				<span id="modal-close" class="modal-close"><i class="fa-solid fa-xmark"></i></span>
+				<div id="modal-works-list" class="modal-content">
+					<div class="modal-content-box">
+						<h2 class="modal-title">Galerie photo</h2>
+						<div id="modal-gallery-works"></div>
+						<div class="modal-button-list">
+							<button id="modal-button-add-work" class="modal-button">Ajouter une photo</button>
+							<button id="modal-button-delete-work" class="modal-button">Supprimer la galerie</button>
+						</div>
+					</div>
+				</div>
 				<div id="modal-works-add" class="modal-content">
-				<span id="modal-previous" class="modal-previous">
-          <i id="caret-left"  class="fa-solid fa-caret-left"></i>
-        </span>
-				<h2 class="modal-title">Ajout photo</h2>
-				<form id="modal-form-new-work" class="modal-form" action="#">
-					<div id="modal-add-image">
-						<span class="modal-button">+Ajouter photo</span>
-						<p>jpg png: 4mo max</p>
-						<input type="file" accept=".jpg, .png" id="modal-form-image" class="modal-form-image">
+					<span id="modal-previous" class="modal-previous"><i id="caret-left" class="fa-solid fa-caret-left"></i></span>
+					<div class="modal-content-box">
+						<h2 class="modal-title">Ajout photo</h2>
+						<form id="modal-form-new-work" class="modal-form" action="#">
+							<div id="modal-add-image">
+                <img src="assets/icons/add_img.png"/>
+								<button class="modal-button">+ Ajouter photo</button>
+								<p>jpg png: 4mo max</p>
+								<input type="file" accept=".jpg, .png" id="modal-form-image" class="modal-form-image">
+							</div>
+							<div id="modal-add-form">
+								<label for="modal-form-title">Titre</label>
+								<input type="text" id="modal-form-title" name="modal-form-title" >
+		            <label for="modal-form-category">Catégorie</label>
+			            <select id="modal-form-category" name="modal-form-category">
+										<!--
+										générer en javascript
+									-->
+									<option value=""></option>
+									<option value="1">Objets</option>
+									<option value="2">Appartements</option>
+									<option value="3">Hôtels & Restaurants</option>
+								</select>
+
+                <div class="divider"></div>
+								<button type="submit" id="modal-button-save-work" class="modal-button modal-validate">Valider</button>
+							</div>
+						</form>
 					</div>
-					<div id="modal-add-form">
-						<label for="modal-form-title">Titre</label>
-						<input type="text" id="modal-form-title" class="modal-form-title" name="modal-form-title" >
-            <label for="modal-form-category">Catégorie</label>
-						<select id="modal-form-category" class="modal-form-category" name="modal-form-category">
-							<!--
-							générer en javascript
-							-->
-							<option value=""></option>
-              <option value="1">Objets</option>
-              <option value="2">Appartements</option>
-              <option value="3">Hôtels & Restaurants</option>
-						</select>
-            <button type="submit" id="modal-button-save-work" class="modal-button">Valider</button>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
     <footer>
