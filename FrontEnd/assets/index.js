@@ -10,22 +10,23 @@ fetch("http://localhost:5678/api/works")
 
 		// Create elements
 		let figure = document.createElement('figure');
-		let img = document.createElement('img');
+		let imgFigure = document.createElement('img');
 		let figcaption = document.createElement('figcaption');
 
 		// Ajout des classes pour figure
 		figure.classList.add('work-item', `category-id-0`);
 		figure.classList.add('work-item', `category-id-${work.categoryId}`);
+		figure.setAttribute('id', `work-item-${work.id}`);
 
 		// Set attributes for image
-		img.setAttribute('src', work.imageUrl);
-		img.setAttribute('alt', work.title);
-		img.setAttribute('crossorigin', "anonymous");
+		imgFigure.setAttribute('src', work.imageUrl);
+		imgFigure.setAttribute('alt', work.title);
+		imgFigure.setAttribute('crossorigin', "anonymous");
 
 		// Set attribute for figcaption
 		figcaption.innerText = work.title
 
-		figure.appendChild(img);
+		figure.appendChild(imgFigure);
 		figure.appendChild(figcaption);
 
 		// Add the projects in the DOM

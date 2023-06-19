@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(function (value) {
         document.getElementById("modal-gallery-works").textContent = "";
         value.forEach((work) => {
+
           // Creating <div>
           let div = document.createElement("div");
           div.setAttribute("id", `gallery-works-item-${work.id}`);
@@ -58,49 +59,41 @@ document.addEventListener("DOMContentLoaded", function () {
           );
           iconTrash.addEventListener("click", function (event) {
             event.preventDefault();
-            let click_id = event.target.parentNode.getAttribute("work-id"); // ID de l'image
-            console.log("Supprime l'id : " + click_id);
-            // @toDelete! Faire un fetch en copiant collant un autre déjà fait et l'adapter
+            if(confirm("Are you sure ?")) {
+	            let click_id = event.target.parentNode.getAttribute("work-id"); // ID de l'image
+	            console.log("Supprime l'id : " + click_id);
+	            // @toDelete! Faire un fetch en copiant collant un autre déjà fait et l'adapter
 
-            fetch("http://localhost:5678/api/works/" + click_id, {
-              method: "DELETE",
-              headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-              },
-            })
-              .then(function (result) {
-                return result.json();
-              })
-
-              .then(function (response) {
-                switch (response.status) {
-                  case 500:
-                  case 503:
-                    console.error("Erreur inattendue!");
-                    break;
-                  case 400:
-                  case 404:
-                    console.error("Impossible de supprimer le nouveau projet!");
-                    break;
-                  case 200:
-                  case 201:
-                    console.log("Projet supprimé avec succés!");
-                    return response.json();
-                    break;
-                  default:
-                    console.error("Erreur inconnue!");
-                    break;
-                }
-              })
-             
-            // Récupérer l'ID 		=>		OK
-            // Parcour le tableau récupéré (value).
-            // Si "element_parcouru" est égal à "click_id"
-            // Supprime la ligne (tout l'objet JSOn qui correspond à l'ID).
-
-            // console.log(value);
+	            fetch("http://localhost:5678/api/works/" + click_id, {
+	              method: "DELETE",
+	              headers: {
+	                Authorization: "Bearer " + localStorage.getItem("token"),
+	              },
+	            })
+	            .then(function (response) {
+	              switch (response.status) {
+	                case 500:
+	                case 503:
+	                  console.error("Erreur inattendue!");
+	                  break;
+	                case 400:
+	                case 404:
+	                  console.error("Impossible de supprimer le nouveau projet!");
+	                  break;
+	                case 200:
+	                case 201:
+	                case 204:
+	                  console.log("Projet supprimé avec succes!");
+	                  document.getElementById('gallery-works-item-'+click_id).remove();
+	                  document.getElementById('work-item-'+click_id).remove();
+	                  break;
+	                default:
+	                  console.error("Erreur inconnue!");
+	                  break;
+	              }
+	            })
+            }
           });
-
           div.appendChild(iconTrash);
 
           // Add elements to the DOM
@@ -116,6 +109,9 @@ document.addEventListener("DOMContentLoaded", function () {
   modal_close.addEventListener("click", function (event) {
     modal.style.display = "none";
     modal_previous.click();
+    document.getElementById('modal-form-image').value = '';
+    document.getElementById('modal-form-title').value = '';
+    document.getElementById('modal-form-category').value = '';
   });
 
   // Handling modal closing by overlay
@@ -186,37 +182,39 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(function (json) {
         console.log(json);
-        // @toImprove! Implémenter le HTML (en js) qui permet d'afficher le work dans la popup et dans le corps de la page à partir de ce que contient la variable json
-        // @toImprove! Implémenter le HTML (en js) qui permet d'afficher le work dans la popup et dans le corps de la page à partir de ce que contient la variable json
-        // @toImprove! Implémenter le HTML (en js) qui permet d'afficher le work dans la popup et dans le corps de la page à partir de ce que contient la variable json
-        // @toImprove! Implémenter le HTML (en js) qui permet d'afficher le work dans la popup et dans le corps de la page à partir de ce que contient la variable json
-        // createElement + setAttribute + appendChild
 
-        // Creating <div>
-        let div = document.createElement("div");
-        div.setAttribute("id", `gallery-works-item-${work.id}`);
-        div.setAttribute("work-id", work.id);
-        div.classList.add("gallery-works-item");
+      	// >>>>> Creating page item
 
-        // Creating <img>
-        let img = document.createElement("img");
-        img.setAttribute("src", work.imageUrl);
-        img.setAttribute("alt", work.title);
-        img.setAttribute("crossorigin", "anonymous");
-        div.appendChild(img);
+        // Create elements
+        let figure = document.createElement('figure');
+        let imgFigure = document.createElement('img');
+        let figcaption = document.createElement('figcaption');
 
-        // Creating <span>
-        let span = document.createElement("span");
-        span.textContent = "éditer";
-        div.appendChild(span);
+        // Ajout des classes pour figure
+        figure.classList.add('work-item', `category-id-0`);
+        figure.classList.add('work-item', `category-id-${json.categoryId}`);
+        figure.setAttribute('id', `work-item-${json.id}`);
 
-        // Creating CTA <i> move
-        let iconMove = document.createElement("i");
-        iconMove.setAttribute(
-          "class",
-          "gallery-works-item-icon fa-solid fa-up-down-left-right"
-        );
-        div.appendChild(iconMove);
+        // Set attributes for image
+        imgFigure.setAttribute('src', json.imageUrl);
+        imgFigure.setAttribute('alt', json.title);
+        imgFigure.setAttribute('crossorigin', "anonymous");
+
+        // Set attribute for figcaption
+        figcaption.innerText = json.title
+
+        figure.appendChild(imgFigure);
+        figure.appendChild(figcaption);
+
+        // Add the projects in the DOM
+        document.querySelector('.gallery').appendChild(figure);
+
+      	// >>>>> Close popup
+				modal_close.click();
+
+				// >>>>> Navigate to the new item
+				const position = document.getElementById(`work-item-${json.id}`).offsetTop - 30;
+				window.scrollTo(0, position);
       })
       .catch(function (err) {
         console.log(err);
