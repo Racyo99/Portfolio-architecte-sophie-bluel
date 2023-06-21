@@ -84,7 +84,18 @@ fetch("http://localhost:5678/api/categories")
 				workItem.style.display = 'block';
 			});
 		});
+
 	})
+
+	// create elements
+	let select = document.createElement("select");
+	let option = document.createElement("option");
+
+	select.appendChild(option);
+
+
+	// Add the projects in the DOM
+	document.querySelector('#modal-form-category').appendChild(option);
 })
 .catch(function(err) {
 	console.log(err);
