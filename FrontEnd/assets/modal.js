@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let modal_works_add = document.getElementById("modal-works-add");
   let modal_previous = document.getElementById("modal-previous");
   let modal_add_image = document.getElementById("modal-add-image");
-  let modal_button_save_work = document.getElementById(
-    "modal-button-save-work"
-  );
+  let modal_button_save_work = document.getElementById("modal-button-save-work");
 
   // Handling modal opening
   modal_open.addEventListener("click", function (event) {
@@ -135,10 +133,35 @@ document.addEventListener("DOMContentLoaded", function () {
     modal_works_add.style.display = "none";
   });
 
-  // Uploading file
+  // Uploading file (fait avec mentor)
   modal_add_image.addEventListener("click", function (event) {
     document.getElementById("modal-form-image").click();
+   // const image = document.querySelector("img"),
+    //input = document.querySelector("input");
+  
+    //input.addEventListener("change", () => {
+    //  image.src = URL.createObjectURL(input.files[0]);
+    //});
   });
+
+  // Uploader et afficher le changement de l'image (test de ma part)
+ // let fileInput = document.getElementById('modal-form-image');
+		//fileInput.addEventListener('change', () => {
+			//let myPreviewImage = document.createElement('img');
+			//myPreviewImage.src = URL.createObjectURL(fileInput.files[0]);
+			//console.log(myPreviewImage);
+      
+      // Prévisualiser l'image avec un API & APIFileReader pour lire le contenu du fichier img 
+      // et afficher l'image sur la page web
+     // let reader = new FileReader();
+      //reader.onload = function(event){
+       // let myPreviewImage = event.target.result;
+      //};
+
+      //reader.readAsDataURL(file);
+
+  // });
+
 
   // Sending new work to API backend
   modal_button_save_work.addEventListener("click", function (event) {
