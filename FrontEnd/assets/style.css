@@ -310,12 +310,23 @@ footer nav ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
   margin: 3em;
 }
 
+#login-email, #login-password{
+  padding: 1%;
+  margin-top: 5%;
+}
+
+#login-form-email, #login-form-password{
+  margin-top: 3%;
+}
+
+
 .form-contain {
-  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 500;
@@ -522,12 +533,6 @@ color: #000000;
 }
 
 
-
-
-
-
-
-
 #modal-add-image{
   display: flex;
   flex-direction: column;
@@ -537,6 +542,10 @@ color: #000000;
   align-items: center;
   background: #E8F1F7;
   border-radius: 3px;
+}
+
+#modal-add-image-preview{
+  max-width: 30%;
 }
 
 #modal-add-form{
@@ -685,3 +694,4 @@ margin-bottom: 2rem;
   width: 100%;
   border-top: 1px solid #B3B3B3;
 }
+

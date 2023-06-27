@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('modal-form-image').value = '';
     document.getElementById('modal-form-title').value = '';
     document.getElementById('modal-form-category').value = '';
+    document.getElementById('modal-add-image-preview').src = document.getElementById('modal-add-image-preview').getAttribute('data-placehoder');
   });
 
   // Handling modal closing by overlay
@@ -133,35 +134,16 @@ document.addEventListener("DOMContentLoaded", function () {
     modal_works_add.style.display = "none";
   });
 
-  // Uploading file (fait avec mentor)
+  // Uploading image file
   modal_add_image.addEventListener("click", function (event) {
     document.getElementById("modal-form-image").click();
-   // const image = document.querySelector("img"),
-    //input = document.querySelector("input");
-  
-    //input.addEventListener("change", () => {
-    //  image.src = URL.createObjectURL(input.files[0]);
-    //});
   });
 
-  // Uploader et afficher le changement de l'image (test de ma part)
- // let fileInput = document.getElementById('modal-form-image');
-		//fileInput.addEventListener('change', () => {
-			//let myPreviewImage = document.createElement('img');
-			//myPreviewImage.src = URL.createObjectURL(fileInput.files[0]);
-			//console.log(myPreviewImage);
-      
-      // Prévisualiser l'image avec un API & APIFileReader pour lire le contenu du fichier img 
-      // et afficher l'image sur la page web
-     // let reader = new FileReader();
-      //reader.onload = function(event){
-       // let myPreviewImage = event.target.result;
-      //};
-
-      //reader.readAsDataURL(file);
-
-  // });
-
+  // Previewing image file
+	let fileInput = document.getElementById('modal-form-image');
+	fileInput.addEventListener('change', function (event) {
+		document.getElementById('modal-add-image-preview').src = URL.createObjectURL(fileInput.files[0]);
+	});
 
   // Sending new work to API backend
   modal_button_save_work.addEventListener("click", function (event) {
@@ -187,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
         switch (response.status) {
           case 500:
           case 503:
-            alert("Erreur inattendue!");
+            alert("Veuillez vérifier votre saisie");
             break;
           case 400:
           case 404:
@@ -199,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
             break;
           default:
-            alert("Erreur inconnue!");
+            alert("Veuillez vérifier votre saisie");
             break;
         }
       })

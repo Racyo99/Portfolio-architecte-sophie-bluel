@@ -57,7 +57,7 @@ fetch("http://localhost:5678/api/categories")
 	categories.forEach(category => {
 		let button = document.createElement('button');
 
-		// Adding button
+		// Adding buttons filters
 		button.innerText = category.name;
 		if(category.id === 0) {
 			button.setAttribute('class', 'work-filter work-filter-active');
@@ -67,6 +67,14 @@ fetch("http://localhost:5678/api/categories")
 		}
 		button.setAttribute('data-filter', `category-id-${category.id}`);
 		document.getElementById('filters').appendChild(button);
+
+		// Adding popup select options
+		if(category.id !== 0) {
+			let option = document.createElement("option");
+			option.setAttribute('value', category.id);
+			option.textContent = category.name;
+			document.querySelector('#modal-form-category').appendChild(option);
+		}
 
 		// Listening click events on filters
 		button.addEventListener('click', function(event) {
@@ -84,18 +92,7 @@ fetch("http://localhost:5678/api/categories")
 				workItem.style.display = 'block';
 			});
 		});
-
-	})
-
-	// create elements
-	let select = document.createElement("select");
-	let option = document.createElement("option");
-
-	select.appendChild(option);
-
-
-	// Add the projects in the DOM
-	document.querySelector('#modal-form-category').appendChild(option);
+	});
 })
 .catch(function(err) {
 	console.log(err);

@@ -101,7 +101,7 @@
 						<h2 class="modal-title">Ajout photo</h2>
 						<form id="modal-form-new-work" class="modal-form" action="#" method="post">
 							<div id="modal-add-image">
-                <img src="assets/icons/add_img.png"/>
+                <img id="modal-add-image-preview" src="assets/icons/add_img.png" data-placehoder="assets/icons/add_img.png"/>
 								<button type="button" class="modal-button">+ Ajouter photo</button>
 								<p>jpg png: 4mo max</p>
 								<input type="file" accept=".jpg, .png" id="modal-form-image" class="modal-form-image">
@@ -111,15 +111,8 @@
 								<input type="text" id="modal-form-title" name="modal-form-title" >
 		            <label for="modal-form-category">Catégorie</label>
 			            <select id="modal-form-category" name="modal-form-category">
-										<!--
-										générer en javascript
-									-->
 									<option value=""></option>
-									<option value="1">Objets</option>
-									<option value="2">Appartements</option>
-									<option value="3">Hôtels & Restaurants</option>
 								</select>
-
                 <div class="divider"></div>
 								<button type="submit" id="modal-button-save-work" class="modal-button modal-validate">Valider</button>
 							</div>
