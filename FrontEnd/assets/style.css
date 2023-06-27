@@ -358,6 +358,7 @@ footer nav ul {
   line-height: 17px;
 
   text-align: center;
+  cursor: pointer;
 
   color: #ffffff;
 }
